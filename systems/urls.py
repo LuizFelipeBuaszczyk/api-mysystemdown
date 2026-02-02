@@ -1,7 +1,7 @@
 from rest_framework_nested.routers import NestedDefaultRouter
 from rest_framework.routers import DefaultRouter
 
-from systems.views import SystemViewSet
+from systems.views.system_view import SystemViewSet
 from iam.views.membership_view import MembershipViewSet
 
 router = DefaultRouter()

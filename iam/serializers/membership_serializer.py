@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from iam.models import Membership
 from users.serializers import UserReadSerializer
-from systems.serializers import SystemReadSerializer
         
 class MembershipReadSerializer(serializers.ModelSerializer):
     user = UserReadSerializer()

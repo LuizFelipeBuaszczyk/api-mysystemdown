@@ -4,14 +4,14 @@ from rest_framework.response import Response
 from rest_framework import status
 from drf_spectacular.utils import extend_schema_view, extend_schema
 
-from .serializers import SystemReadSerializer, SystemWriteSerializer
-from .services.system_service import SystemService
+from ..serializers.system_serializer import SystemReadSerializer, SystemWriteSerializer, SystemListReadSetializer
+from ..services.system_service import SystemService
 
 
 # Create your views here.
 @extend_schema_view(
     list=extend_schema(
-        responses={200: SystemReadSerializer}
+        responses={200: SystemListReadSetializer}
     ),
     create=extend_schema(
         request=SystemWriteSerializer,
@@ -25,7 +25,7 @@ class SystemViewSet(GenericViewSet):
         systems = SystemService.list_systems(request.user) 
         
         return Response(
-            data=SystemReadSerializer(systems).data,
+            data=SystemListReadSetializer(systems).data,
             status=status.HTTP_200_OK
         )
     
