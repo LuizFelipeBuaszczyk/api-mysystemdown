@@ -4,8 +4,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from drf_spectacular.utils import extend_schema_view, extend_schema
 
-from ..serializers.system_serializer import SystemReadSerializer, SystemWriteSerializer, SystemListReadSetializer
-from ..services.system_service import SystemService
+from systems.serializers.system_serializer import SystemReadSerializer, SystemWriteSerializer, SystemListReadSetializer
+from systems.services.system_service import SystemService
 
 
 # Create your views here.

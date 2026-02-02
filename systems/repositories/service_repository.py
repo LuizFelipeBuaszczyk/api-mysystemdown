@@ -10,7 +10,7 @@ class ServiceRepository:
         return Service.objects.values(is_active=is_active)
     
     @staticmethod
-    def create_system(data: dict):
+    def create_service(data: dict):
         return Service.objects.create(**data)
     
     @staticmethod
