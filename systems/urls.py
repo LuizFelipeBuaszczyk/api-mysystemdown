@@ -1,7 +1,14 @@
+from rest_framework_nested.routers import NestedDefaultRouter
 from rest_framework.routers import DefaultRouter
-from .views import SystemViewSet
+
+from systems.views import SystemViewSet
+from iam.views.membership_view import MembershipViewSet
 
 router = DefaultRouter()
 router.register(r"", SystemViewSet, basename="systems")
 
-urlpatterns = router.urls
+# router_pai, prefixo url pai, como você acessa o atributo central
+nested = NestedDefaultRouter(router, "", lookup="system")
+nested.register("memberships", MembershipViewSet, basename="system-memberships")
+
+urlpatterns = router.urls + nested.urls

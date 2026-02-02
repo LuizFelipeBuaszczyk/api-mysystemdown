@@ -12,7 +12,7 @@ class SystemViewSet(ViewSet):
     permission_classes = [IsAuthenticated]
     
     def list(self, request):
-        systems = SystemService.list_systems(request.user)
+        systems = SystemService.list_systems(request.user) 
         serializer = SystemReadSerializer(systems, many=True)
         
         return Response(serializer.data)

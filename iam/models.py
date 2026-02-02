@@ -12,7 +12,7 @@ class Membership(models.Model):
     
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     system = models.ForeignKey(System, on_delete=models.CASCADE)
-    role = models.CharField(max_length=20, choices=ROLE_CHOICES)
+    role = models.CharField(max_length=20, choices=ROLE_CHOICES, null=False, blank=False, default="viewer")
     
     joined_at = models.DateTimeField(auto_now_add=True)
     

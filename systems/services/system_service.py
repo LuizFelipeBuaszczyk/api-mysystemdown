@@ -3,12 +3,13 @@ from systems.exceptions import SystemAlreadyExistsError
 
 from iam.services.membership_service import MembershipService
 from users.models import User
+from systems.models import System
 
 class SystemService:
-    
+       
     @staticmethod
-    def list_systems():
-        return SystemRepository.get_all()        
+    def list_systems(user: User):
+        return SystemRepository.get_all(user)        
     
     @staticmethod
     def create_system(data: dict, owner: User):

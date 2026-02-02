@@ -1,7 +1,12 @@
 
 from iam.models import Membership
+from systems.models import System
 
 class MembershipRepository:
+    
+    @staticmethod
+    def get_memberships_by_system(system: System):
+        return Membership.objects.filter(system=system).select_related("user")
     
     @staticmethod
     def crate_membership(data: dict):

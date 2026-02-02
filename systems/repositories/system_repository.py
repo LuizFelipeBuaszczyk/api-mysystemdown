@@ -1,11 +1,15 @@
 
 from systems.models import System
+from users.models import User
 
 class SystemRepository:       
     
+    
     @staticmethod
-    def get_all():
-        return System.objects.values()
+    def get_all(user: User):
+        return System.objects.filter(
+            membership__user=user
+        ).distinct()
     
     @staticmethod
     def get_by_name(name: str):
