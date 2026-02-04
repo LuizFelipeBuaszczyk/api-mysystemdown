@@ -3,7 +3,7 @@ from django.contrib.auth.hashers import make_password
 from systems.utils.token import generate_token, PREFIX_BOT_TOKEN
 
 from systems.repositories.bot_repository import BotRepository
-from systems.models import System
+from systems.models import System, Bot
 
 
 class BotService:
@@ -25,6 +25,6 @@ class BotService:
         return created_bot
     
     @staticmethod
-    def delete_bot():
-        return BotRepository.delete_bot()
+    def delete_bot(bot: Bot):
+        return BotRepository.delete_bot(bot)
     

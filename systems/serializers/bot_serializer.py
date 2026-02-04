@@ -20,3 +20,7 @@ class BotReadCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bot
         fields = ["id", "bot_name", "api_token"]
+        
+class BotDeleteSerializer(serializers.Serializer):
+    message = serializers.CharField()
+    deleted_id = serializers.UUIDField()

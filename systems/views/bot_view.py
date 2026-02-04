@@ -8,7 +8,7 @@ from uuid import UUID
 
 from systems.services.bot_service import BotService
 from systems.models import System, Bot
-from systems.serializers.bot_serializer import BotReadSerializer, BotWriteSerializer, BotReadCreateSerializer
+from systems.serializers.bot_serializer import BotReadSerializer, BotWriteSerializer, BotReadCreateSerializer, BotDeleteSerializer
 
 @extend_schema_view(
     list=extend_schema(
@@ -30,6 +30,23 @@ from systems.serializers.bot_serializer import BotReadSerializer, BotWriteSerial
                 type=UUID,
                 location=OpenApiParameter.PATH,
                 description="System's UUID"
+            ),
+        ]
+    ),
+    destroy=extend_schema(
+        responses={200: BotDeleteSerializer},
+        parameters=[
+            OpenApiParameter(
+                name="system_pk",
+                type=UUID,
+                location=OpenApiParameter.PATH,
+                description="System's UUID"
+            ),
+            OpenApiParameter(
+                name="id",
+                type=UUID,
+                location=OpenApiParameter.PATH,
+                description="Bot's UUID"
             ),
         ]
     )
@@ -67,3 +84,18 @@ class BotViewSet(GenericViewSet):
             BotReadCreateSerializer(bot).data,
             status=status.HTTP_201_CREATED
         )
+        
+    def destroy(self, request, system_pk: UUID, pk: UUID):
+        system = get_object_or_404(System.objects.filter(membership__user=request.user), id=system_pk)
+        bot = get_object_or_404(Bot, id=pk)
+
+        BotService.delete_bot(bot=bot)
+        
+        serializer = BotDeleteSerializer({
+            "message": "Bot deleted successfully",
+            "deleted_id": pk
+        })
+        return Response(
+            serializer.data,
+            status=status.HTTP_200_OK
+            )
