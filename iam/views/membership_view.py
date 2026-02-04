@@ -1,9 +1,9 @@
 from rest_framework.viewsets import GenericViewSet
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from drf_spectacular.utils import extend_schema_view, extend_schema, OpenApiParameter
 
+from iam.permissions.membership_permissions import MembershipPermission
 from systems.models import System
 from iam.services.membership_service import MembershipService
 from iam.serializers.membership_serializer import MembershipReadSerializer, MembershipListReadSerializer, MembershipCreateSerializer
@@ -35,7 +35,7 @@ from iam.serializers.membership_serializer import MembershipReadSerializer, Memb
     )
 )
 class MembershipViewSet(GenericViewSet):
-    permission_classes = [IsAuthenticated]       
+    permission_classes = [MembershipPermission]       
     
 
     def list(self, request, system_pk=None):
@@ -47,13 +47,12 @@ class MembershipViewSet(GenericViewSet):
 
     def create(self, request, system_pk=None):
         system = get_object_or_404(System, id=system_pk)
-        serializer = MembershipCreateSerializer(request.data)
+        serializer = MembershipCreateSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
         membership = MembershipService.create_membership(
             data=serializer.validated_data,
-            system=system,
-            user=request.user
+            system=system
         )
 
         serializer = MembershipReadSerializer(membership)

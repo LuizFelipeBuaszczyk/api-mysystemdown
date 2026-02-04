@@ -4,10 +4,10 @@ from users.serializers import UserReadSerializer
         
 class MembershipReadSerializer(serializers.ModelSerializer):
     user = UserReadSerializer()
-    
+    group = serializers.StringRelatedField()
     class Meta:
         model = Membership
-        fields = ["id", "role", "joined_at", "user"]
+        fields = ["id", "group", "joined_at", "user"]
         
 class MembershipListReadSerializer(serializers.ListSerializer):
     child = MembershipReadSerializer()
@@ -15,4 +15,4 @@ class MembershipListReadSerializer(serializers.ListSerializer):
 class MembershipCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Membership
-        fields = ["user", "role"]
+        fields = ["user", "group"]

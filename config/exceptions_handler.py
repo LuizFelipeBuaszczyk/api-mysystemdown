@@ -2,6 +2,7 @@ from rest_framework.views import exception_handler
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.exceptions import ValidationError as drf_validation_error
+from rest_framework.exceptions import PermissionDenied
 from django.core.exceptions import ValidationError as django_validation_error
 from django.db.utils import IntegrityError
 from config.exceptions import BusinessRuleError, AuthenticationError
@@ -34,6 +35,15 @@ def custom_exception_handler(exc, context):
         return Response(
             {"error": str(exc)},
             status=status.HTTP_401_UNAUTHORIZED
+        )
+    
+    if isinstance(exc, PermissionDenied):
+        return Response(
+            {
+                "error": "Permission Denied",
+                "detail": str(exc)
+            },
+            status=status.HTTP_403_FORBIDDEN
         )
         
 

@@ -1,10 +1,11 @@
 from django.shortcuts import get_object_or_404
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.response import Response
 from rest_framework import status
 from drf_spectacular.utils import extend_schema_view, extend_schema, OpenApiParameter
 from uuid import UUID
+
+from iam.permissions.bot_permissions import BotPermission
 
 from systems.services.bot_service import BotService
 from systems.models import System, Bot
@@ -52,7 +53,7 @@ from systems.serializers.bot_serializer import BotReadSerializer, BotWriteSerial
     )
 )
 class BotViewSet(GenericViewSet):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [BotPermission]
     
     ## Declara qual serializer será utilizado de acordo com a ação
     def get_serializer_class(self):

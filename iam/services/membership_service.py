@@ -10,7 +10,6 @@ class MembershipService:
         return MembershipRepository.get_memberships_by_system(system)
         
     @staticmethod
-    def create_membership(data: dict, system: System, user: User):
+    def create_membership(data: dict, system: System):
         data["system"] = system
-        data["user"] = user
         return MembershipRepository.crate_membership(data)

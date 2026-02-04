@@ -4,6 +4,7 @@ from systems.exceptions import SystemAlreadyExistsError
 from iam.services.membership_service import MembershipService
 from users.models import User
 from systems.models import System
+from django.contrib.auth.models import Group
 
 class SystemService:
        
@@ -14,6 +15,7 @@ class SystemService:
     @staticmethod
     def create_system(data: dict, owner: User):
         existing = SystemRepository.get_by_name(data["name"])
+        group = Group.objects.get(name="owner")
         
         if existing:
             raise SystemAlreadyExistsError("System name has already registred")
@@ -21,7 +23,7 @@ class SystemService:
         system = SystemRepository.create_system(data)
         data = {
             "user": owner,
-            "role":"owner"
+            "group": group
         }
         member = MembershipService.create_membership(data=data, user=owner, system=system)
         return system

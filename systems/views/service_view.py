@@ -1,11 +1,11 @@
 from django.shortcuts import get_object_or_404
 from rest_framework.viewsets import GenericViewSet
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 from drf_spectacular.utils import extend_schema_view, extend_schema, OpenApiParameter
 from uuid import UUID
 
+from iam.permissions.service_permissions import ServicePermission   
 from systems.models import System, Service
 
 from systems.serializers.service_serializer import ServiceReadSerializer, ServiceWriteSerializer
@@ -36,7 +36,7 @@ from systems.services.service_service import ServiceService
     )
 )
 class ServiceViewSet(GenericViewSet):
-    permission_classes = [IsAuthenticated]    
+    permission_classes = [ServicePermission]    
     
     ## Declara qual serializer será utilizado de acordo com a ação
     def get_serializer_class(self):

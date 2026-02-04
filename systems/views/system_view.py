@@ -1,9 +1,9 @@
 from rest_framework.viewsets import GenericViewSet
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 from drf_spectacular.utils import extend_schema_view, extend_schema
 
+from iam.permissions.systems_permissions import SystemPermission 
 from systems.serializers.system_serializer import SystemReadSerializer, SystemWriteSerializer, SystemListReadSetializer
 from systems.services.system_service import SystemService
 
@@ -19,7 +19,7 @@ from systems.services.system_service import SystemService
     )
 )
 class SystemViewSet(GenericViewSet):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [SystemPermission]
     
     def list(self, request):
         systems = SystemService.list_systems(request.user) 
