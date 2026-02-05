@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'systems',
     'users',
     'iam',
+    'services',
 ]
 
 REST_FRAMEWORK = {
