@@ -43,10 +43,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_spectacular',
     
-    'systems',
     'users',
+    'systems',
     'iam',
-    'services',
+    'services', 
 ]
 
 REST_FRAMEWORK = {
@@ -104,7 +104,6 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -113,9 +112,9 @@ DATABASES = {
         'PASSWORD': os.getenv("POSTGRES_PASSWORD"),
         'HOST': os.getenv("POSTGRES_HOST"),
         'PORT': os.getenv("POSTGRES_PORT"),
+        # TODO: Implementar configuração de teste:  "TEST": { "NAME": "mytestdatabase", }
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
