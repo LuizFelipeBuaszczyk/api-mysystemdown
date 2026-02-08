@@ -11,14 +11,14 @@ class BotPermission(BasePermission):
         if view.action == "create":
             return Membership.objects.filter(
                 user=request.user,
-                system_id=system_pk,
+                tenant=request.tenant,
                 group__permissions__codename="add_bot"
             ).exists()
         
         if view.action == "list":
             return Membership.objects.filter(
                 user=request.user,
-                system_id=system_pk,
+                tenant=request.tenant,
                 group__permissions__codename="view_bot"
             ).exists()
         

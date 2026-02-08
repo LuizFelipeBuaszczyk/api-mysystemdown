@@ -22,7 +22,7 @@ class SystemViewSet(GenericViewSet):
     permission_classes = [SystemPermission]
     
     def list(self, request):
-        systems = SystemService.list_systems(request.user) 
+        systems = SystemService.list_systems() 
         
         return Response(
             data=SystemListReadSetializer(systems).data,
@@ -34,8 +34,7 @@ class SystemViewSet(GenericViewSet):
         serializer.is_valid(raise_exception=True)
 
         system = SystemService.create_system(
-            data=serializer.validated_data,
-            owner=request.user
+            data=serializer.validated_data
         )
         
         return Response(

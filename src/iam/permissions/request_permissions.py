@@ -1,6 +1,7 @@
 from rest_framework.permissions import BasePermission
 
 from systems.models import Service   
+from django.contrib.auth.models import Group
 from iam.authentication.token_auth import TokenAuthentication
 
 BOT_ACTIONS = ["create", "list"]
@@ -17,12 +18,11 @@ class RequestPermission(BasePermission):
 
      
         if view.action == "list":
-            return Service.objects.filter(
-                id=service_pk,
-                system__memberships__user=request.user,
-                system__memberships__group__permissions__codename="view_request"
+            return Group.objects.filter(
+                    memberships__user=request.user,
+                    memberships__tenant=request.tenant,
+                    permissions__codename="view_request"
             ).exists()
-            
         
         return False
     

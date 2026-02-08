@@ -32,7 +32,11 @@ pip install .
 O sistema necessita de alguns registros previamente inseridos. Para isso é necessário rodar os seguintes script dentro da pasta `/src`.
 
 ``` shell
-python manage.py migrate
+python manage.py migrate_schemas --shared
+```
+
+``` shell
+python manage.py seed_tenants
 ```
 
 ``` shell

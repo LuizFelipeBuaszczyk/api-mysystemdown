@@ -33,21 +33,45 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 
-INSTALLED_APPS = [
+# INSTALLED_APPS = [
+#     'django.contrib.admin',
+#     'django.contrib.auth',
+#     'django.contrib.contenttypes',
+#     'django.contrib.sessions',
+#     'django.contrib.messages',
+#     'django.contrib.staticfiles',
+#     'rest_framework',
+#     'drf_spectacular',
+    
+#     'users',
+#     'systems',
+#     'iam',
+#     'services', 
+# ]
+
+SHARED_APPS = [
+    'django_tenants',
+    'tenants',
+
+    'rest_framework',
+    'drf_spectacular',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
-    'drf_spectacular',
-    
+
     'users',
+    'iam'
+]
+
+TENANT_APPS = [    
     'systems',
-    'iam',
     'services', 
 ]
+
+INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]
 
 REST_FRAMEWORK = {
     "EXCEPTION_HANDLER": "config.exceptions_handler.custom_exception_handler",
@@ -73,6 +97,7 @@ SPECTACULAR_SETTINGS = {
 AUTH_USER_MODEL = "users.User"
 
 MIDDLEWARE = [
+    'django_tenants.middleware.main.TenantMainMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -106,7 +131,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        #'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django_tenants.postgresql_backend',
         'NAME': os.getenv("POSTGRES_DB"),
         'USER': os.getenv("POSTGRES_USER"),
         'PASSWORD': os.getenv("POSTGRES_PASSWORD"),
@@ -115,6 +141,10 @@ DATABASES = {
         # TODO: Implementar configuração de teste:  "TEST": { "NAME": "mytestdatabase", }
     }
 }
+
+DATABASE_ROUTERS = (
+    'django_tenants.routers.TenantSyncRouter',
+)
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
@@ -151,3 +181,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+TENANT_MODEL = 'tenants.Client'
+TENANT_DOMAIN_MODEL = 'tenants.Domain'

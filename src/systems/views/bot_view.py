@@ -62,7 +62,7 @@ class BotViewSet(GenericViewSet):
         return BotReadSerializer
     
     def list(self, request, system_pk: UUID):
-        system = get_object_or_404(System.objects.filter(memberships__user=request.user), id=system_pk)
+        system = get_object_or_404(System, id=system_pk)
         bots = BotService.get_all(system=system)
         
         return Response(
@@ -71,7 +71,7 @@ class BotViewSet(GenericViewSet):
         )
     
     def create(self, request, system_pk: UUID):
-        system = get_object_or_404(System.objects.filter(memberships__user=request.user), id=system_pk)
+        system = get_object_or_404(System, id=system_pk)
 
         serializer = BotWriteSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -86,17 +86,18 @@ class BotViewSet(GenericViewSet):
             status=status.HTTP_201_CREATED
         )
         
-    def destroy(self, request, system_pk: UUID, pk: UUID):
-        system = get_object_or_404(System.objects.filter(memberships__user=request.user), id=system_pk)
-        bot = get_object_or_404(Bot, id=pk)
+    # TODO: Novo APP bots para manipulação específica do objeto Bot
+    # def destroy(self, request, system_pk: UUID, pk: UUID):
+    #     system = get_object_or_404(System.objects.filter(memberships__user=request.user), id=system_pk)
+    #     bot = get_object_or_404(Bot, id=pk)
 
-        BotService.delete_bot(bot=bot)
+    #     BotService.delete_bot(bot=bot)
         
-        serializer = BotDeleteSerializer({
-            "message": "Bot deleted successfully",
-            "deleted_id": pk
-        })
-        return Response(
-            serializer.data,
-            status=status.HTTP_200_OK
-            )
+    #     serializer = BotDeleteSerializer({
+    #         "message": "Bot deleted successfully",
+    #         "deleted_id": pk
+    #     })
+    #     return Response(
+    #         serializer.data,
+    #         status=status.HTTP_200_OK
+    #         )

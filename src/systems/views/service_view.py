@@ -59,7 +59,7 @@ class ServiceViewSet(GenericViewSet):
     def list(self, request, system_pk: UUID):
         just_actives = request.query_params.get("actives", "false").lower() == "true"
         
-        system = get_object_or_404(System.objects.filter(memberships__user=request.user), id=system_pk)
+        system = get_object_or_404(System, id=system_pk)
         services = ServiceService.list_services(system=system, just_actives=just_actives)
         
         return Response(

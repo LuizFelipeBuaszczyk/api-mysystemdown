@@ -1,15 +1,13 @@
 
 from systems.models import System
-from users.models import User
+from tenants.models import Client
 
 class SystemRepository:       
     
     
     @staticmethod
-    def get_all(user: User):
-        return System.objects.filter(
-            memberships__user=user
-        ).distinct()
+    def get_all():
+        return System.objects.distinct()
     
     @staticmethod
     def get_by_name(name: str):

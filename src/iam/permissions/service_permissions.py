@@ -12,19 +12,19 @@ class ServicePermission(BasePermission):
             if view.action == "create":
                 return Group.objects.filter(
                     memberships__user=request.user,
-                    memberships__system__id=system_pk,
+                    memberships__tenant=request.tenant,
                     permissions__codename="add_service"
                 ).exists()
             
             if view.action == "list":
                 return Group.objects.filter(
                     memberships__user=request.user,
-                    memberships__system__id=system_pk,
+                    memberships__tenant=request.tenant,
                     permissions__codename="view_service"
                 ).exists()
         
-            return False
-        return True
+        return False
+
     
     def has_object_permission(self, request, view, obj):       
         service = obj.system.memberships.filter(
