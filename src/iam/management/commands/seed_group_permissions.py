@@ -35,7 +35,7 @@ class Command(BaseCommand):
         ))
         
         self.owner.permissions.add(*perms.filter(
-            codename__in=[ "view_system", "change_system", "delete_system"]
+            codename__in=["add_system", "view_system", "change_system", "delete_system"]
         ))
 
         self.admin.permissions.add(*perms.filter(
