@@ -32,7 +32,7 @@ def public_tenant(django_db_setup, django_db_blocker):
     return tenant
 
 @pytest.fixture(scope="session")
-def user(django_db_setup, django_db_blocker, public_tenant):
+def auth_user(django_db_setup, django_db_blocker, public_tenant):
     from django_tenants.utils import schema_context
     
     from users.models import User
@@ -51,33 +51,33 @@ def public_tenant_client(public_tenant):
     return TenantClient(public_tenant)
 
 @pytest.fixture(scope="session")
-def tenant1(create_tenant, user):
+def tenant1(create_tenant, auth_user):
     tenant = create_tenant(
         schema_name="tenant1",
         domain="tenant1.localhost",
         name="Tenant 1",
-        user=user
+        user=auth_user
     )
     return tenant
     
     
 @pytest.fixture
-def tenant_client(tenant1, user):
+def tenant_client(tenant1, auth_user):
     from django_tenants.test.client import TenantClient
     from rest_framework_simplejwt.tokens import RefreshToken
 
     client = TenantClient(tenant1)
 
-    token = RefreshToken.for_user(user)
+    token = RefreshToken.for_user(auth_user)
     client.defaults["HTTP_AUTHORIZATION"] = f"Bearer {token.access_token}"
     return client
 
 
 @pytest.fixture
-def public_auth_client(public_tenant_client, user):
+def public_auth_client(public_tenant_client, auth_user):
     from rest_framework_simplejwt.tokens import RefreshToken
 
-    token = RefreshToken.for_user(user)
+    token = RefreshToken.for_user(auth_user)
     public_tenant_client.defaults["HTTP_AUTHORIZATION"] = f"Bearer {token.access_token}"
     return public_tenant_client
 
@@ -88,4 +88,5 @@ pytest_plugins = [
     "tests.fixtures.tenant_fixture",
     "tests.fixtures.service_fixture",
     "tests.fixtures.bot_fixture",
+    "tests.fixtures.membership_fixture",
 ]
