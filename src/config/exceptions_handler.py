@@ -7,11 +7,13 @@ from django.core.exceptions import ValidationError as django_validation_error
 from django.db.utils import IntegrityError
 from config.exceptions import BusinessRuleError, AuthenticationError
 
+from utils.logger import get_logger
+
+logger = get_logger(__name__)
 
 def custom_exception_handler(exc, context):
-    print(type(exc))
     response = exception_handler(exc, context)
-
+    logger.error(f"Error: {exc}")
 
     if isinstance(exc, drf_validation_error):
         return Response(
@@ -78,7 +80,7 @@ def custom_exception_handler(exc, context):
             status=response.status_code
         )
                 
-    print(str(exc))
+    logger.critical(f"{type(exc)} - {str(exc)}")
     return Response(
         {"error": "Internal Server Error"}, 
         status=status.HTTP_500_INTERNAL_SERVER_ERROR 

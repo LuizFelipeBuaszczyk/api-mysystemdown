@@ -19,6 +19,8 @@ load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+LOG_DIR = Path('logs')
+LOG_DIR.mkdir(parents=True, exist_ok=True)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
@@ -32,22 +34,6 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 # Application definition
-
-# INSTALLED_APPS = [
-#     'django.contrib.admin',
-#     'django.contrib.auth',
-#     'django.contrib.contenttypes',
-#     'django.contrib.sessions',
-#     'django.contrib.messages',
-#     'django.contrib.staticfiles',
-#     'rest_framework',
-#     'drf_spectacular',
-    
-#     'users',
-#     'systems',
-#     'iam',
-#     'services', 
-# ]
 
 SHARED_APPS = [
     'django_tenants',
@@ -184,3 +170,51 @@ STATIC_URL = 'static/'
 
 TENANT_MODEL = 'tenants.Client'
 TENANT_DOMAIN_MODEL = 'tenants.Domain'
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    
+    "formatters": {
+        "default": {
+            "format": """%(asctime)s [%(levelname)s] %(filename)s :: %(message)s""",
+        }
+    },
+    
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "default",
+            "level": os.getenv("LOG_LEVEL", "INFO")
+        },
+        "file_general": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": "logs/app.log",
+            "maxBytes": 5_000_000,
+            "backupCount": 5,
+            "formatter": "default",
+            "level": os.getenv("LOG_LEVEL", "INFO")
+        },
+        "file_error": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": "logs/error.log",
+            "maxBytes": 5_000_000,
+            "backupCount": 5,
+            "formatter": "default",
+            "level": "ERROR"
+        }
+    },
+    
+    "loggers": {
+        "django": {
+            "handlers": ["console", "file_general", "file_error"],
+            "level": os.getenv("DJANGO_LOG_LEVEL", "INFO"),
+            "propagate": True
+        },
+        "mysystemdown": {
+            "handlers": ["console", "file_general", "file_error"],
+            "level": os.getenv("LOG_LEVEL", "INFO"),
+            "propagate": False
+        }
+    }
+}

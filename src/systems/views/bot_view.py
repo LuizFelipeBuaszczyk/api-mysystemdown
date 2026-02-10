@@ -11,6 +11,10 @@ from systems.services.bot_service import BotService
 from systems.models import System, Bot
 from systems.serializers.bot_serializer import BotReadSerializer, BotWriteSerializer, BotReadCreateSerializer, BotDeleteSerializer
 
+from utils.logger import get_logger
+
+logger = get_logger(__name__)
+
 @extend_schema_view(
     list=extend_schema(
         parameters=[
@@ -62,6 +66,7 @@ class BotViewSet(GenericViewSet):
         return BotReadSerializer
     
     def list(self, request, system_pk: UUID):
+        logger.info(f"Listing bots - user_id: {request.user.id}, system_pk: {system_pk}")
         system = get_object_or_404(System, id=system_pk)
         bots = BotService.get_all(system=system)
         
@@ -71,6 +76,7 @@ class BotViewSet(GenericViewSet):
         )
     
     def create(self, request, system_pk: UUID):
+        logger.info(f"Create bot - user_id: {request.user.id}, system_pk: {system_pk}")
         system = get_object_or_404(System, id=system_pk)
 
         serializer = BotWriteSerializer(data=request.data)

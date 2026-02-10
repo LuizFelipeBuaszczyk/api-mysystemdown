@@ -6,6 +6,10 @@ from drf_spectacular.utils import extend_schema
 from iam.serializers.login_serializer import LoginRequestSerializer, LoginResponseSerializer
 from iam.services.auth_service import AuthService
 
+from utils.logger import get_logger
+
+logger = get_logger(__name__)
+
 # Create your views here.
 
 class LoginView(APIView):
@@ -17,6 +21,7 @@ class LoginView(APIView):
         }
     )
     def post(self, request):
+        logger.info(f"Starting Login")
         serializer = LoginRequestSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         

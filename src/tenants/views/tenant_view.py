@@ -8,6 +8,10 @@ from drf_spectacular.utils import extend_schema, extend_schema_view
 from tenants.serializers.tenant_serializer import TenantWriteSerializer, TenantReadSerializer
 from tenants.service.tenant_service import TenantService
 
+from utils.logger import get_logger
+
+logger = get_logger(__name__)
+
 # Create your views here.
 
 @extend_schema_view(
@@ -20,6 +24,7 @@ class TeanantView(GenericViewSet):
     permission_classes = [IsAuthenticated]
     
     def create(self, request):
+        logger.info(f"Create tenant - user_id: {request.user.id}")
         serializer = TenantWriteSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         

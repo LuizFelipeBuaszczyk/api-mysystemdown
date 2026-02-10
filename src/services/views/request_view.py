@@ -11,6 +11,10 @@ from services.services.request_service import RequestService
 
 from services.serializers.request_serializer import RequestListReadSerializer, RequestWriteSerializer, RequestReadSerializer
 
+from utils.logger import get_logger
+
+logger = get_logger(__name__)
+
 @extend_schema_view(
     list=extend_schema(
         responses={200: RequestListReadSerializer},        
@@ -47,6 +51,7 @@ class RequestViewSet(GenericViewSet):
     permission_classes = [RequestPermission]
     
     def list(self, request, service_pk=None):
+        logger.info(f"Listing requests - user_id: {request.user.id}, service_pk: {service_pk}")
         service = get_object_or_404(Service, id=service_pk)
         
         requests = RequestService.list_requests_by_service(service)
@@ -57,6 +62,7 @@ class RequestViewSet(GenericViewSet):
             )
         
     def create(self, request, service_pk=None):
+        logger.info(f"Create request - user_id: {request.user.id}, service_pk: {service_pk}")
         service = get_object_or_404(Service, id=service_pk)
         
         serializer = RequestWriteSerializer(data=request.data)

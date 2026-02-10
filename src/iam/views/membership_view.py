@@ -6,6 +6,9 @@ from iam.permissions.membership_permissions import MembershipPermission
 from iam.services.membership_service import MembershipService
 from iam.serializers.membership_serializer import MembershipReadSerializer, MembershipListReadSerializer, MembershipCreateSerializer
 
+from utils.logger import get_logger
+
+logger = get_logger(__name__)
 
 @extend_schema_view(
     list=extend_schema(
@@ -20,6 +23,7 @@ class MembershipViewSet(GenericViewSet):
     permission_classes = [MembershipPermission]       
 
     def list(self, request):
+        logger.info(f"Listing memberships - user_id: {request.user.id}")
         tenant = request.tenant
         memberships = MembershipService.get_membership_by_tenant(tenant)  
         
@@ -27,6 +31,7 @@ class MembershipViewSet(GenericViewSet):
         return Response(serializer.data, status=200)
 
     def create(self, request):
+        logger.info(f"Creating membership - user_id: {request.user.id}")
         tenant = request.tenant
         serializer = MembershipCreateSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)

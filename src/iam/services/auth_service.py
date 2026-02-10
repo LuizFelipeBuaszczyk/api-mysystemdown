@@ -6,10 +6,15 @@ from iam.exceptions import InvalidCredentialsError, UserInactiveError, AccountNo
 from config.exceptions import BusinessRuleError
 from systems.repositories.bot_repository import BotRepository
 
+from utils.logger import get_logger
+
+logger = get_logger(__name__)
+
 class AuthService:
     
     @staticmethod
     def login(data: dict):
+        logger.info(f"Starting AuthService login - email: {data['email']}")
         email = data.get("email")
         password = data.get("password")
         
@@ -31,6 +36,7 @@ class AuthService:
         
     @staticmethod
     def refresh_token(data: dict):
+        logger.info(f"Starting AuthService refresh_token - refresh: {data['refresh']}")
         try:
             refresh = RefreshToken(data["refresh"])
 

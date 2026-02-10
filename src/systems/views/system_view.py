@@ -7,6 +7,9 @@ from iam.permissions.systems_permissions import SystemPermission
 from systems.serializers.system_serializer import SystemReadSerializer, SystemWriteSerializer, SystemListReadSetializer
 from systems.services.system_service import SystemService
 
+from utils.logger import get_logger
+
+logger = get_logger(__name__)
 
 # Create your views here.
 @extend_schema_view(
@@ -22,6 +25,7 @@ class SystemViewSet(GenericViewSet):
     permission_classes = [SystemPermission]
     
     def list(self, request):
+        logger.info(f"Listing systems - user_id: {request.user.id}")
         systems = SystemService.list_systems() 
         
         return Response(
@@ -30,6 +34,7 @@ class SystemViewSet(GenericViewSet):
         )
     
     def create(self, request):
+        logger.info(f"Create system - user_id: {request.user.id}")
         serializer = SystemWriteSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
