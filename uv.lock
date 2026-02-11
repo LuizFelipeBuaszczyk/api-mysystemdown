@@ -252,6 +252,7 @@ dependencies = [
     { name = "drf-nested-routers" },
     { name = "drf-spectacular" },
     { name = "psycopg2" },
+    { name = "pyjwt" },
     { name = "python-dotenv" },
     { name = "redis", extra = ["hiredis"] },
 ]
@@ -273,6 +274,7 @@ requires-dist = [
     { name = "drf-nested-routers", specifier = ">=0.95.0" },
     { name = "drf-spectacular", specifier = ">=0.29.0" },
     { name = "psycopg2", specifier = ">=2.9.11" },
+    { name = "pyjwt", specifier = ">=2.11.0" },
     { name = "python-dotenv", specifier = ">=1.2.1" },
     { name = "redis", extras = ["hiredis"], specifier = ">=7.1.1" },
 ]

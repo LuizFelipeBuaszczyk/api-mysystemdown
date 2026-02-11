@@ -31,6 +31,11 @@ SECRET_KEY = 'django-insecure-@zm*b#(@gaofax4wt@6xpg@_iu80p0&@enl2&g74mv1o&-h8ya
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+HOST = os.getenv('HOST', 'localhost')
+PORT = os.getenv('PORT', 8000)
+
+DOMAIN_URL = f'http://{HOST}:{PORT}'
+
 ALLOWED_HOSTS = ['*']
 
 # Application definition
@@ -98,7 +103,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR /  'infra' / 'email' / 'templates'], # Serve para encontrar os templates dos emails
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,7 +129,6 @@ DATABASES = {
         'PASSWORD': os.getenv("POSTGRES_PASSWORD"),
         'HOST': os.getenv("POSTGRES_HOST"),
         'PORT': os.getenv("POSTGRES_PORT"),
-        # TODO: Implementar configuração de teste:  "TEST": { "NAME": "mytestdatabase", }
     }
 }
 
@@ -225,3 +229,14 @@ CACHES = {
         "LOCATION": F"redis://{os.getenv('REDIS_HOST')}:{os.getenv('REDIS_PORT')}",
     }
 }
+
+# Email
+EMAIL_BACKEND ='django.core.mail.backends.console.EmailBackend' if DEBUG else 'django.core.mail.backends.smtp.EmailBackend' 
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    
+DEFAULT_FROM_EMAIL = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+EMAIL_PORT = int(os.getenv("EMAIL_PORT", 0))
+EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS", "").lower() == "true"
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")

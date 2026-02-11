@@ -1,10 +1,13 @@
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.exceptions import TokenError
-from iam.exceptions import InvalidCredentialsError, UserInactiveError, AccountNotVerifiedError
 
+
+from iam.exceptions import InvalidCredentialsError, UserInactiveError, AccountNotVerifiedError, InvalidTokenError
 from config.exceptions import BusinessRuleError
-from systems.repositories.bot_repository import BotRepository
+
+from iam.authentication.token_auth import TokenAuthentication
+from users.repositories.user_repository import UserRepository
 
 from utils.logger import get_logger
 
@@ -47,3 +50,19 @@ class AuthService:
 
         except TokenError:
             raise BusinessRuleError("Refresh token inválido ou expirado")
+        
+    @staticmethod
+    def confirm_user(data: dict):
+        logger.info(f"Starting AuthService confirm_user - token: {data['token']}")
+        token = data.get("token", "")
+        decode_jwt = TokenAuthentication.decode_jwt(token)
+        
+        if not decode_jwt["id"]:
+            raise InvalidTokenError()
+                
+        user = UserRepository.get_user_by_id(decode_jwt["id"])
+        user.is_verified = True
+        user.save()
+        
+        return user
+        

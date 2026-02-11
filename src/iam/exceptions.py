@@ -18,3 +18,7 @@ class UserInactiveError(AuthenticationError):
 class AccountNotVerifiedError(AuthenticationError):
     default_detail = "Account not verified"
     default_code = "account_not_verified"
+    
+class InvalidTokenError(AuthenticationError):
+    default_detail = "Invalid token"
+    default_code = "invalid_token"
