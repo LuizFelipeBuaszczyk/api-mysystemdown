@@ -218,3 +218,10 @@ LOGGING = {
         }
     }
 }
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": F"redis://{os.getenv('REDIS_HOST')}:{os.getenv('REDIS_PORT')}",
+    }
+}
