@@ -3,6 +3,7 @@ from users.models import User
 from django.contrib.auth.models import Group
 
 from utils.logger import get_logger
+from infra.email.email import Email, EmailType
 
 logger = get_logger(__name__)
 
@@ -15,7 +16,13 @@ class UserService:
         
         #TODO: Após implementar a verificação do email, remover essa linha
         data['is_verified'] = True
-        user = UserRepository.create_user(data)                
+        user = UserRepository.create_user(data)  
+        
+        context = {
+            "username": user.first_name + " " + user.last_name,
+            "confirmation_url": f"http://localhost.com"
+        }
+        Email.send_email("Verify your email", user.email, EmailType.CONFIRM_EMAIL_USER, context)
         user.groups.add(group)
         return user
     
