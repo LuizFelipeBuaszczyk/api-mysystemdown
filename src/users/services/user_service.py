@@ -1,7 +1,8 @@
 from users.repositories.user_repository import UserRepository
-from users.models import User
+from django.conf import settings
 from django.contrib.auth.models import Group
 
+from utils.token import create_token_jwt
 from utils.logger import get_logger
 from infra.email.email import Email, EmailType
 
@@ -14,13 +15,12 @@ class UserService:
         logger.info(f"Starting service create_user - email: {data['email']}")
         group = Group.objects.get(name="user_base")
         
-        #TODO: Após implementar a verificação do email, remover essa linha
-        data['is_verified'] = True
         user = UserRepository.create_user(data)  
         
+        confirmation_token = create_token_jwt({"id": str(user.id)})
         context = {
             "username": user.first_name + " " + user.last_name,
-            "confirmation_url": f"http://localhost.com"
+            "confirmation_url": f"{settings.DOMAIN_URL}/auth/confirm-email?token={confirmation_token}"
         }
         Email.send_email("Verify your email", user.email, EmailType.CONFIRM_EMAIL_USER, context)
         user.groups.add(group)

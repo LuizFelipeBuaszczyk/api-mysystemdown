@@ -31,6 +31,11 @@ SECRET_KEY = 'django-insecure-@zm*b#(@gaofax4wt@6xpg@_iu80p0&@enl2&g74mv1o&-h8ya
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+HOST = os.getenv('HOST', 'localhost')
+PORT = os.getenv('PORT', 8000)
+
+DOMAIN_URL = f'http://{HOST}:{PORT}'
+
 ALLOWED_HOSTS = ['*']
 
 # Application definition
@@ -124,7 +129,6 @@ DATABASES = {
         'PASSWORD': os.getenv("POSTGRES_PASSWORD"),
         'HOST': os.getenv("POSTGRES_HOST"),
         'PORT': os.getenv("POSTGRES_PORT"),
-        # TODO: Implementar configuração de teste:  "TEST": { "NAME": "mytestdatabase", }
     }
 }
 

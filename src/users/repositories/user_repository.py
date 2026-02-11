@@ -6,6 +6,10 @@ logger = get_logger(__name__)
 class UserRepository:
     
     @staticmethod
+    def get_user_by_id(user_id: int) -> User:
+        return User.objects.get(id=user_id)
+    
+    @staticmethod
     def create_user(data: dict) -> User:
         logger.debug(f"Starting repository create_user - email: {data['email']}")
         password = data.pop("password")
