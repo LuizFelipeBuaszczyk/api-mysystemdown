@@ -4,7 +4,8 @@ from django.contrib.auth.models import Group
 
 from utils.token import create_token_jwt
 from utils.logger import get_logger
-from infra.email.email import Email, EmailType
+from infra.queue.tasks.email import send_email
+from infra.email.email import EmailType
 
 logger = get_logger(__name__)
 
@@ -22,7 +23,7 @@ class UserService:
             "username": user.first_name + " " + user.last_name,
             "confirmation_url": f"{settings.DOMAIN_URL}/auth/confirm-email?token={confirmation_token}"
         }
-        Email.send_email("Verify your email", user.email, EmailType.CONFIRM_EMAIL_USER, context)
+        send_email.delay("Verify your email", user.email, EmailType.CONFIRM_EMAIL_USER.value, context)
         user.groups.add(group)
         return user
     

@@ -14,8 +14,8 @@ class EmailType(Enum):
 class Email:
     
     @classmethod
-    def send_email(cls, subject, to_email, email_type: EmailType, context: dict):
-        logger.info(f"Sending email to {to_email} - type: {email_type.value}")
+    def send_email(cls, subject, to_email, email_type: str, context: dict):
+        logger.info(f"Sending email to {to_email} - type: {email_type}")
         html_content, html_text = cls.__get_html_template(email_type, context)
         
         email = EmailMultiAlternatives(
@@ -26,12 +26,12 @@ class Email:
             )
         email.attach_alternative(html_content, 'text/html')
         email.send()
-        logger.info(f"Email sent to {to_email} - type: {email_type.value}")
+        logger.info(f"Email sent to {to_email} - type: {email_type}")
         
     @staticmethod
-    def __get_html_template(email_type: EmailType, context: dict):
-        logger.debug(f"Starting Email __get_html_template - email_type: {email_type.value}")
-        html_content = render_to_string(f'emails/{email_type.value}.html', context)
+    def __get_html_template(email_type: str, context: dict):
+        logger.debug(f"Starting Email __get_html_template - email_type: {email_type}")
+        html_content = render_to_string(f'emails/{email_type}.html', context)
         html_text = strip_tags(html_content)
         return html_content, html_text
         

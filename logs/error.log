@@ -1,0 +1,140 @@
+2026-02-11 08:49:27,683 [ERROR] exceptions_handler.py :: Error: You do not have permission to perform this action.
+2026-02-11 08:49:45,381 [ERROR] exceptions_handler.py :: Error: 'SystemViewSet' object has no attribute 'method'
+2026-02-11 08:49:45,382 [CRITICAL] exceptions_handler.py :: <class 'AttributeError'> - 'SystemViewSet' object has no attribute 'method'
+2026-02-11 08:49:45,382 [ERROR] log.py :: Internal Server Error: /systems/
+2026-02-11 08:49:45,383 [ERROR] log.py :: "GET /systems/ HTTP/1.1" 500 33
+2026-02-11 08:52:49,913 [ERROR] exceptions_handler.py :: Error: You do not have permission to perform this action.
+2026-02-11 09:13:22,881 [ERROR] exceptions_handler.py :: Error: You do not have permission to perform this action.
+2026-02-11 09:22:38,493 [ERROR] exceptions_handler.py :: Error: get_tenant() missing 1 required positional argument: 'request'
+2026-02-11 09:22:38,493 [CRITICAL] exceptions_handler.py :: <class 'TypeError'> - get_tenant() missing 1 required positional argument: 'request'
+2026-02-11 09:22:38,493 [ERROR] log.py :: Internal Server Error: /systems/
+2026-02-11 09:22:38,494 [ERROR] log.py :: "GET /systems/ HTTP/1.1" 500 33
+2026-02-11 09:28:45,926 [ERROR] exceptions_handler.py :: Error: name 'tenant' is not defined
+2026-02-11 09:28:45,926 [CRITICAL] exceptions_handler.py :: <class 'NameError'> - name 'tenant' is not defined
+2026-02-11 09:28:45,927 [ERROR] log.py :: Internal Server Error: /systems/
+2026-02-11 09:28:45,927 [ERROR] log.py :: "GET /systems/ HTTP/1.1" 500 33
+2026-02-11 09:35:01,587 [ERROR] exceptions_handler.py :: Error: You do not have permission to perform this action.
+2026-02-11 09:36:34,168 [ERROR] exceptions_handler.py :: Error: You do not have permission to perform this action.
+2026-02-11 09:40:16,831 [ERROR] exceptions_handler.py :: Error: You do not have permission to perform this action.
+2026-02-11 09:40:43,385 [ERROR] exceptions_handler.py :: Error: You do not have permission to perform this action.
+2026-02-11 09:43:04,734 [ERROR] exceptions_handler.py :: Error: System name has already registred
+2026-02-11 09:51:57,900 [ERROR] exceptions_handler.py :: Error: No System matches the given query.
+2026-02-11 10:03:02,344 [ERROR] exceptions_handler.py :: Error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+2026-02-11 10:03:28,924 [ERROR] exceptions_handler.py :: Error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+2026-02-11 11:10:13,944 [ERROR] exceptions_handler.py :: Error: Email.send_email() takes 3 positional arguments but 4 were given
+2026-02-11 11:10:13,945 [CRITICAL] exceptions_handler.py :: <class 'TypeError'> - Email.send_email() takes 3 positional arguments but 4 were given
+2026-02-11 11:10:13,945 [ERROR] log.py :: Internal Server Error: /users/
+2026-02-11 11:10:13,946 [ERROR] log.py :: "POST /users/ HTTP/1.1" 500 33
+2026-02-11 11:12:29,013 [ERROR] exceptions_handler.py :: Error: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-7966c23c244sm16912317b3.26 - gsmtp')
+2026-02-11 11:12:29,013 [CRITICAL] exceptions_handler.py :: <class 'smtplib.SMTPAuthenticationError'> - (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-7966c23c244sm16912317b3.26 - gsmtp')
+2026-02-11 11:12:29,014 [ERROR] log.py :: Internal Server Error: /users/
+2026-02-11 11:12:29,015 [ERROR] log.py :: "POST /users/ HTTP/1.1" 500 33
+2026-02-11 11:16:33,309 [ERROR] exceptions_handler.py :: Error: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-7966c16ee43sm18226437b3.3 - gsmtp')
+2026-02-11 11:16:33,309 [CRITICAL] exceptions_handler.py :: <class 'smtplib.SMTPAuthenticationError'> - (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-7966c16ee43sm18226437b3.3 - gsmtp')
+2026-02-11 11:16:33,309 [ERROR] log.py :: Internal Server Error: /users/
+2026-02-11 11:16:33,311 [ERROR] log.py :: "POST /users/ HTTP/1.1" 500 33
+2026-02-11 11:18:12,458 [ERROR] exceptions_handler.py :: Error: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-7966c1a398asm17128387b3.22 - gsmtp')
+2026-02-11 11:18:12,459 [CRITICAL] exceptions_handler.py :: <class 'smtplib.SMTPAuthenticationError'> - (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-7966c1a398asm17128387b3.22 - gsmtp')
+2026-02-11 11:18:12,460 [ERROR] log.py :: Internal Server Error: /users/
+2026-02-11 11:18:12,460 [ERROR] log.py :: "POST /users/ HTTP/1.1" 500 33
+2026-02-11 11:22:02,025 [ERROR] exceptions_handler.py :: Error: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-7966c23c4ccsm17414657b3.31 - gsmtp')
+2026-02-11 11:22:02,025 [CRITICAL] exceptions_handler.py :: <class 'smtplib.SMTPAuthenticationError'> - (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-7966c23c4ccsm17414657b3.31 - gsmtp')
+2026-02-11 11:22:02,025 [ERROR] log.py :: Internal Server Error: /users/
+2026-02-11 11:22:02,025 [ERROR] log.py :: "POST /users/ HTTP/1.1" 500 33
+2026-02-11 11:24:26,361 [ERROR] exceptions_handler.py :: Error: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 956f58d0204a3-64afc864ef6sm2041376d50.6 - gsmtp')
+2026-02-11 11:24:26,361 [CRITICAL] exceptions_handler.py :: <class 'smtplib.SMTPAuthenticationError'> - (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 956f58d0204a3-64afc864ef6sm2041376d50.6 - gsmtp')
+2026-02-11 11:24:26,363 [ERROR] log.py :: Internal Server Error: /users/
+2026-02-11 11:24:26,365 [ERROR] log.py :: "POST /users/ HTTP/1.1" 500 33
+2026-02-11 11:29:56,493 [ERROR] exceptions_handler.py :: Error: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-7966c267e14sm16968467b3.51 - gsmtp')
+2026-02-11 11:29:56,493 [CRITICAL] exceptions_handler.py :: <class 'smtplib.SMTPAuthenticationError'> - (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-7966c267e14sm16968467b3.51 - gsmtp')
+2026-02-11 11:29:56,494 [ERROR] log.py :: Internal Server Error: /users/
+2026-02-11 11:29:56,494 [ERROR] log.py :: "POST /users/ HTTP/1.1" 500 33
+2026-02-11 11:31:22,401 [ERROR] exceptions_handler.py :: Error: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-7966c190465sm17152497b3.19 - gsmtp')
+2026-02-11 11:31:22,401 [CRITICAL] exceptions_handler.py :: <class 'smtplib.SMTPAuthenticationError'> - (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-7966c190465sm17152497b3.19 - gsmtp')
+2026-02-11 11:31:22,402 [ERROR] log.py :: Internal Server Error: /users/
+2026-02-11 11:31:22,402 [ERROR] log.py :: "POST /users/ HTTP/1.1" 500 33
+2026-02-11 11:31:50,531 [ERROR] exceptions_handler.py :: Error: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-7966c23f1bdsm17623577b3.28 - gsmtp')
+2026-02-11 11:31:50,531 [CRITICAL] exceptions_handler.py :: <class 'smtplib.SMTPAuthenticationError'> - (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-7966c23f1bdsm17623577b3.28 - gsmtp')
+2026-02-11 11:31:50,532 [ERROR] log.py :: Internal Server Error: /users/
+2026-02-11 11:31:50,533 [ERROR] log.py :: "POST /users/ HTTP/1.1" 500 33
+2026-02-11 11:45:00,715 [ERROR] exceptions_handler.py :: Error: Email.send_email() missing 1 required positional argument: 'to_email'
+2026-02-11 11:45:00,716 [CRITICAL] exceptions_handler.py :: <class 'TypeError'> - Email.send_email() missing 1 required positional argument: 'to_email'
+2026-02-11 11:45:00,717 [ERROR] log.py :: Internal Server Error: /users/
+2026-02-11 11:45:00,717 [ERROR] log.py :: "POST /users/ HTTP/1.1" 500 33
+2026-02-11 11:45:56,229 [ERROR] exceptions_handler.py :: Error: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-796d6808661sm3051457b3.38 - gsmtp')
+2026-02-11 11:45:56,229 [CRITICAL] exceptions_handler.py :: <class 'smtplib.SMTPAuthenticationError'> - (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-796d6808661sm3051457b3.38 - gsmtp')
+2026-02-11 11:45:56,230 [ERROR] log.py :: Internal Server Error: /users/
+2026-02-11 11:45:56,230 [ERROR] log.py :: "POST /users/ HTTP/1.1" 500 33
+2026-02-11 11:46:32,322 [ERROR] exceptions_handler.py :: Error: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-7966c267f40sm17651017b3.52 - gsmtp')
+2026-02-11 11:46:32,322 [CRITICAL] exceptions_handler.py :: <class 'smtplib.SMTPAuthenticationError'> - (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-7966c267f40sm17651017b3.52 - gsmtp')
+2026-02-11 11:46:32,323 [ERROR] log.py :: Internal Server Error: /users/
+2026-02-11 11:46:32,323 [ERROR] log.py :: "POST /users/ HTTP/1.1" 500 33
+2026-02-11 11:47:11,374 [ERROR] exceptions_handler.py :: Error: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-7966c16e5desm18012357b3.11 - gsmtp')
+2026-02-11 11:47:11,374 [CRITICAL] exceptions_handler.py :: <class 'smtplib.SMTPAuthenticationError'> - (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-7966c16e5desm18012357b3.11 - gsmtp')
+2026-02-11 11:47:11,375 [ERROR] log.py :: Internal Server Error: /users/
+2026-02-11 11:47:11,375 [ERROR] log.py :: "POST /users/ HTTP/1.1" 500 33
+2026-02-11 11:49:22,489 [ERROR] exceptions_handler.py :: Error: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-7966c23e4bdsm17919317b3.32 - gsmtp')
+2026-02-11 11:49:22,489 [CRITICAL] exceptions_handler.py :: <class 'smtplib.SMTPAuthenticationError'> - (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-7966c23e4bdsm17919317b3.32 - gsmtp')
+2026-02-11 11:49:22,491 [ERROR] log.py :: Internal Server Error: /users/
+2026-02-11 11:49:22,491 [ERROR] log.py :: "POST /users/ HTTP/1.1" 500 33
+2026-02-11 11:50:22,777 [ERROR] exceptions_handler.py :: Error: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-7966c190465sm17624497b3.19 - gsmtp')
+2026-02-11 11:50:22,777 [CRITICAL] exceptions_handler.py :: <class 'smtplib.SMTPAuthenticationError'> - (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-7966c190465sm17624497b3.19 - gsmtp')
+2026-02-11 11:50:22,777 [ERROR] log.py :: Internal Server Error: /users/
+2026-02-11 11:50:22,777 [ERROR] log.py :: "POST /users/ HTTP/1.1" 500 33
+2026-02-11 13:35:53,163 [ERROR] exceptions_handler.py :: Error: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+2026-02-11 13:36:05,464 [ERROR] exceptions_handler.py :: Error: name 'user' is not defined
+2026-02-11 13:36:05,465 [CRITICAL] exceptions_handler.py :: <class 'NameError'> - name 'user' is not defined
+2026-02-11 13:36:05,465 [ERROR] log.py :: Internal Server Error: /users/
+2026-02-11 13:36:05,465 [ERROR] log.py :: "POST /users/ HTTP/1.1" 500 33
+2026-02-11 13:57:28,253 [ERROR] exceptions_handler.py :: Error: emails/EmailType.CONFIRM_EMAIL_USER.html
+2026-02-11 13:57:28,253 [CRITICAL] exceptions_handler.py :: <class 'django.template.exceptions.TemplateDoesNotExist'> - emails/EmailType.CONFIRM_EMAIL_USER.html
+2026-02-11 13:57:28,266 [ERROR] log.py :: Internal Server Error: /users/
+2026-02-11 13:57:28,267 [ERROR] log.py :: "POST /users/ HTTP/1.1" 500 33
+2026-02-11 14:00:39,225 [ERROR] exceptions_handler.py :: Error: emails/EmailType.CONFIRM_EMAIL_USER.html
+2026-02-11 14:00:39,225 [CRITICAL] exceptions_handler.py :: <class 'django.template.exceptions.TemplateDoesNotExist'> - emails/EmailType.CONFIRM_EMAIL_USER.html
+2026-02-11 14:00:39,226 [ERROR] log.py :: Internal Server Error: /users/
+2026-02-11 14:00:39,226 [ERROR] log.py :: "POST /users/ HTTP/1.1" 500 33
+2026-02-11 14:02:25,149 [ERROR] exceptions_handler.py :: Error: emails/EmailType.CONFIRM_EMAIL_USER.html
+2026-02-11 14:02:25,149 [CRITICAL] exceptions_handler.py :: <class 'django.template.exceptions.TemplateDoesNotExist'> - emails/EmailType.CONFIRM_EMAIL_USER.html
+2026-02-11 14:02:25,150 [ERROR] log.py :: Internal Server Error: /users/
+2026-02-11 14:02:25,150 [ERROR] log.py :: "POST /users/ HTTP/1.1" 500 33
+2026-02-11 14:03:10,379 [ERROR] exceptions_handler.py :: Error: emails/EmailType.CONFIRM_EMAIL_USER.html
+2026-02-11 14:03:10,379 [CRITICAL] exceptions_handler.py :: <class 'django.template.exceptions.TemplateDoesNotExist'> - emails/EmailType.CONFIRM_EMAIL_USER.html
+2026-02-11 14:03:10,380 [ERROR] log.py :: Internal Server Error: /users/
+2026-02-11 14:03:10,380 [ERROR] log.py :: "POST /users/ HTTP/1.1" 500 33
+2026-02-11 15:04:12,887 [ERROR] exceptions_handler.py :: Error: Object of type UUID is not JSON serializable
+2026-02-11 15:04:12,888 [CRITICAL] exceptions_handler.py :: <class 'TypeError'> - Object of type UUID is not JSON serializable
+2026-02-11 15:04:12,888 [ERROR] log.py :: Internal Server Error: /users/
+2026-02-11 15:04:12,888 [ERROR] log.py :: "POST /users/ HTTP/1.1" 500 33
+2026-02-11 15:10:32,494 [ERROR] exceptions_handler.py :: Error: {'email': [ErrorDetail(string='Enter a valid email address.', code='invalid')]}
+2026-02-11 15:10:40,687 [ERROR] exceptions_handler.py :: Error: User is not verified
+2026-02-11 15:12:47,352 [ERROR] exceptions_handler.py :: Error: Token parameter not found
+2026-02-11 15:14:10,282 [ERROR] exceptions_handler.py :: Error: Token parameter not found
+2026-02-11 15:17:23,334 [ERROR] exceptions_handler.py :: Error: 'user_id'
+2026-02-11 15:17:23,334 [CRITICAL] exceptions_handler.py :: <class 'KeyError'> - 'user_id'
+2026-02-11 15:17:23,358 [ERROR] log.py :: Internal Server Error: /auth/confirm-email
+2026-02-11 15:17:23,359 [ERROR] log.py :: "GET /auth/confirm-email?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNmODVkYjJjLTEzZTQtNDIxZi05OWFjLTc2MmYyOWQ2ZWQ2OSJ9.jh6hkvtDpxh3dJ_oPGLQRCmw-Z9tJBknQxn0KH4IxUQ HTTP/1.1" 500 10833
+2026-02-11 15:17:50,812 [ERROR] exceptions_handler.py :: Error: 'user_id'
+2026-02-11 15:17:50,812 [CRITICAL] exceptions_handler.py :: <class 'KeyError'> - 'user_id'
+2026-02-11 15:17:50,834 [ERROR] log.py :: Internal Server Error: /auth/confirm-email
+2026-02-11 15:17:50,835 [ERROR] log.py :: "GET /auth/confirm-email?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNmODVkYjJjLTEzZTQtNDIxZi05OWFjLTc2MmYyOWQ2ZWQ2OSJ9.jh6hkvtDpxh3dJ_oPGLQRCmw-Z9tJBknQxn0KH4IxUQ HTTP/1.1" 500 10833
+2026-02-11 15:18:43,383 [ERROR] exceptions_handler.py :: Error: 'user_id'
+2026-02-11 15:18:43,383 [CRITICAL] exceptions_handler.py :: <class 'KeyError'> - 'user_id'
+2026-02-11 15:18:43,411 [ERROR] log.py :: Internal Server Error: /auth/confirm-email
+2026-02-11 15:18:43,411 [ERROR] log.py :: "GET /auth/confirm-email?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNmODVkYjJjLTEzZTQtNDIxZi05OWFjLTc2MmYyOWQ2ZWQ2OSJ9.jh6hkvtDpxh3dJ_oPGLQRCmw-Z9tJBknQxn0KH4IxUQ HTTP/1.1" 500 10833
+2026-02-11 15:19:18,326 [ERROR] exceptions_handler.py :: Error: 'user_id'
+2026-02-11 15:19:18,326 [CRITICAL] exceptions_handler.py :: <class 'KeyError'> - 'user_id'
+2026-02-11 15:19:18,366 [ERROR] log.py :: Internal Server Error: /auth/confirm-email
+2026-02-11 15:19:18,366 [ERROR] log.py :: "GET /auth/confirm-email?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNmODVkYjJjLTEzZTQtNDIxZi05OWFjLTc2MmYyOWQ2ZWQ2OSJ9.jh6hkvtDpxh3dJ_oPGLQRCmw-Z9tJBknQxn0KH4IxUQ HTTP/1.1" 500 10833
+2026-02-11 15:20:03,808 [ERROR] exceptions_handler.py :: Error: User is not verified
+2026-02-11 15:21:31,557 [ERROR] exceptions_handler.py :: Error: {'token': [ErrorDetail(string='This field may not be null.', code='null')]}
+2026-02-12 09:47:40,149 [ERROR] exceptions_handler.py :: Error: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+2026-02-12 09:55:02,241 [ERROR] exceptions_handler.py :: Error: send_email() missing 1 required positional argument: 'context'
+2026-02-12 09:55:02,242 [CRITICAL] exceptions_handler.py :: <class 'TypeError'> - send_email() missing 1 required positional argument: 'context'
+2026-02-12 09:55:02,242 [ERROR] log.py :: Internal Server Error: /users/
+2026-02-12 09:55:02,243 [ERROR] log.py :: "POST /users/ HTTP/1.1" 500 33
+2026-02-12 10:35:16,488 [ERROR] exceptions_handler.py :: Error: Object of type EmailType is not JSON serializable
+2026-02-12 10:35:16,488 [CRITICAL] exceptions_handler.py :: <class 'kombu.exceptions.EncodeError'> - Object of type EmailType is not JSON serializable
+2026-02-12 10:35:16,489 [ERROR] log.py :: Internal Server Error: /users/
+2026-02-12 10:35:16,489 [ERROR] log.py :: "POST /users/ HTTP/1.1" 500 33
+2026-02-12 10:38:59,837 [ERROR] exceptions_handler.py :: Error: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
