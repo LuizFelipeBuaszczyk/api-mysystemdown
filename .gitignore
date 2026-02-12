@@ -11,4 +11,5 @@ wheels/
 
 # Other
 .env
+/logs
 */logs
